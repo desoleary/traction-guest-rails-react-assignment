@@ -1,0 +1,16 @@
+{
+  "baseUrl": "http://localhost:3001",
+  "viewportWidth": 1280,
+  "viewportHeight": 720,
+  "chromeWebSecurity": false,
+  "videoUploadOnPasses": false,
+  "video": false,
+  "testFiles": "**/*.*",
+  "ignoreTestFiles": [
+    "**/examples/**/*.*"
+  ],
+  "env": {
+    "CYPRESS_BUILD": true,
+    "TAGS": "not (@ignore or @api_only)"
+  }
+}
