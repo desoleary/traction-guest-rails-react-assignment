@@ -1,6 +1,4 @@
 require: rubocop-rspec
-inherit_from:
-  - .rubocop-exceptions.yml
 
 inherit_gem:
   rubocop-rails_config: config/rails.yml
@@ -19,8 +17,9 @@ AllCops:
     - "tmp/**/*"
     - "vendor/**/*"
     - "db/schema.rb"
+    - "config/initializers/devise.rb"
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120
   Exclude:
     - "spec/**/*"
@@ -37,9 +36,6 @@ Metrics/ModuleLength:
   Max: 300
   Exclude:
     - "spec/**/*"
-
-SpaceInLambdaLiteral:
-  EnforcedStyle: require_space
 
 Style/BlockDelimiters:
   EnforcedStyle: braces_for_chaining

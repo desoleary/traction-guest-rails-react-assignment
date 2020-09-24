@@ -1,9 +1,0 @@
-Metrics/BlockLength:
-  Exclude:
-    - 'config/routes.rb'
-    - 'config/environments/**/*'
-    - 'Guardfile'
-
-Metrics/LineLength:
-  Exclude:
-    - config/initializers/devise.rb
