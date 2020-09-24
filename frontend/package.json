@@ -4,7 +4,7 @@
     "private": true,
     "scripts": {
         "start": "PORT=3001 react-app-rewired start",
-        "build": "react-app-rewired build",
+        "build": "react-app-rewired build && cp -r build/* ../public/",
         "build-storybook": "build-storybook -s public",
         "cypress": "yarn run concurrently 'wait-on http://localhost:3001 --reverse && yarn run start' 'cypress open'",
         "eject": "react-scripts eject",

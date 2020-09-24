@@ -14,4 +14,8 @@ Rails.application.routes.draw do
   end
 
   root to: 'application#home'
+
+  get "*path", to: "application#react_app", constraints: lambda { |request|
+    !request.xhr? && request.format.html?
+  }
 end

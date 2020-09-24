@@ -1,6 +1,11 @@
 {
   "name": "rails_6_devise_example",
   "private": true,
+  "scripts": {
+    "start": "yarn --cwd frontend start",
+    "build": "yarn --cwd frontend build",
+    "install": "yarn --cwd frontend install"
+  },
   "dependencies": {
     "@rails/actioncable": "^6.0.0-alpha",
     "@rails/activestorage": "^6.0.0-alpha",
