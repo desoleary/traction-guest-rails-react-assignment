@@ -1,5 +1,5 @@
 {
-  "name": "rails_6_devise_example",
+  "name": "traction-guest-rails-react-assignment",
   "private": true,
   "scripts": {
     "start": "yarn --cwd frontend start",
