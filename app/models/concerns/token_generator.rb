@@ -6,7 +6,7 @@ module TokenGenerator
   def generate_token(column)
     self[column] =
         Digest::SHA256.hexdigest(
-            [Time.now.to_i, Rails.application.secrets.secret_key_base].join
+          [Time.now.to_i, Rails.application.secrets.secret_key_base].join
         )
   end
 end

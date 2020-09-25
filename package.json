@@ -4,7 +4,8 @@
   "scripts": {
     "start": "yarn --cwd frontend start",
     "build": "yarn --cwd frontend build",
-    "install": "yarn --cwd frontend install"
+    "install": "yarn --cwd frontend install",
+    "graphql:generate-schema": "bin/rake graphql:generate-schema"
   },
   "dependencies": {
     "@rails/actioncable": "^6.0.0-alpha",

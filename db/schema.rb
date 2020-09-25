@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2020_09_24_223206) do
     t.index ["organization_id"], name: "index_visitors_on_organization_id"
   end
 
+  add_foreign_key "users", "organizations", on_delete: :cascade
   add_foreign_key "visitor_invites", "organizations", on_delete: :cascade
   add_foreign_key "visitor_invites", "users", column: "sender_id"
   add_foreign_key "visitor_invites", "visitors", column: "recipient_id"

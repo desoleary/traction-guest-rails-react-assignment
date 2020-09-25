@@ -1,15 +1,14 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  if Rails.env.development?
-    mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
-  end
-  post "/graphql", to: "graphql#execute"
-  devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    registrations: 'users/registrations',
-    omniauth_callbacks: 'omni_auth'
-  }
+  post '/graphql', to: 'graphql#execute'
+
+  devise_for :users,
+             controllers: {
+               sessions: 'users/sessions',
+               registrations: 'users/registrations',
+               omniauth_callbacks: 'omni_auth'
+             }
   devise_scope :user do
     get 'sign_in', to: 'users/sessions#new'
     get 'sign_up', to: 'users/registrations#new'
@@ -19,7 +18,11 @@ Rails.application.routes.draw do
 
   root to: 'application#home'
 
-  get '*path', to: 'application#react_app', constraints: lambda { |request|
-    !request.xhr? && request.format.html?
-  }
+  if Rails.env.development? || Rails.env.staging?
+    mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql'
+  end
+
+  get '*path',
+      to: 'application#react_app',
+      constraints: ->(request) { !request.xhr? && request.format.html? }
 end

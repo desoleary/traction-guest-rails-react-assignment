@@ -3,7 +3,6 @@
 require 'rails_helper'
 
 describe TokenGenerator do
-
   subject { create(:visitor_invite) }
 
   it 'generates a valid sha256 token' do

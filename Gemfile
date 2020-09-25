@@ -35,6 +35,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'graphql', '1.11.4'
 gem 'dry-validation', '~> 1.5.6'
 gem 'fast_jsonapi', '~> 1.5'
+gem 'colorize', '~> 0.8.1'
+gem 'recursive-open-struct', '~>
+ 1.1.2'
 
 group :staging, :production do
   gem 'rails_12factor'
@@ -78,6 +81,12 @@ group :test do
   gem 'shoulda-matchers', '~> 4.4.1', require: false
   gem 'json_spec'
   gem 'timecop', '~> 0.9.1'
+  gem 'rspec-graphql_matchers', '>= 1.3.0'
+end
+
+group :development do
+  gem 'ruby-debug-ide', '0.7.2'
+  gem 'debase', '0.2.4.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

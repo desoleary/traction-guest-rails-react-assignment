@@ -41,19 +41,17 @@ end
 
 RSpec.configure do |config|
   config.order = 'random'
-  config.fixture_path =
-      "#{::Rails.root}/spec/fixtures"
+  config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
+  config.include GraphqlHelper
+  config.include RSpec::GraphqlMatchers::TypesHelper
+  config.include Devise::Test::IntegrationHelpers, type: :request
   config.include(FactoryBot::Syntax::Methods)
 
-  FactoryBot.definition_file_paths = [
-      Rails.root.join('../factories')
-  ]
+  FactoryBot.definition_file_paths = [Rails.root.join('../factories')]
   FactoryBot.find_definitions
 
-  config.before(:suite) do
-    DatabaseCleaner.clean_with(:truncation)
-  end
+  config.before(:suite) { DatabaseCleaner.clean_with(:truncation) }
 
   config.before(:each) do
     DatabaseCleaner.strategy = :transaction
@@ -62,14 +60,10 @@ RSpec.configure do |config|
     # User.current = nil
   end
 
-  config.after(:each) do
-    DatabaseCleaner.clean
-  end
+  config.after(:each) { DatabaseCleaner.clean }
 
   if Bullet.enable?
-    config.before(:each) do
-      Bullet.start_request
-    end
+    config.before(:each) { Bullet.start_request }
 
     config.after(:each) do
       Bullet.perform_out_of_channel_notifications if Bullet.notification?
