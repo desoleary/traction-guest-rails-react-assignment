@@ -15,7 +15,14 @@
     "bootstrap": "4.3.1",
     "jquery": "^3.4.1",
     "popper.js": "^1.15.0",
-    "turbolinks": "^5.2.0"
+    "turbolinks": "^5.2.0",
+    "@apollo/client": "^3.7.2",
+    "graphql": "^15.8.0",
+    "antd": "4.0.2",
+    "antd-mask-input": "0.1.13",
+    "localforage": "1.7.3",
+    "lodash": "4.17.15",
+    "prop-types": "15.7.2"
   },
   "version": "0.1.0",
   "devDependencies": {

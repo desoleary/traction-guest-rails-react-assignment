@@ -9,6 +9,8 @@ class User < ApplicationRecord
 
   belongs_to :organization
 
+  before_validation :set_defaults
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
@@ -16,5 +18,11 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
     end
+  end
+
+  private
+
+  def set_defaults
+    self.organization = Organization.find_by_name('Default') unless self.organization
   end
 end
